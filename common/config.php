@@ -1,6 +1,6 @@
 <?php
 try {
-    $pdo = new PDO("mysql:host=localhost;dbname=bdd", "utilisateur", "mot_de_passe");
+    $pdo = new PDO("mysql:host=localhost;dbname=biblioweb", "root", "");
 
     //Configuration de PDO pour permettre la bonne gestion des erreurs
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
