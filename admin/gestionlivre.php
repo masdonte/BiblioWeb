@@ -1,3 +1,8 @@
+<?php
+include('../common/config.php');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,6 +14,6 @@
 
 <body>
 
-    <h1>Erreur.</h1 </body>
+</body>
 
 </html>

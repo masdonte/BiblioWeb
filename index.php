@@ -1,9 +1,9 @@
 <?php
 // Récupération de la route depuis l'URL
-$page = isset($_GET['page']) ? $_GET['page'] : 'home';
+$page = isset($_GET['page']) ? $_GET['page'] : 'login';
 
 // Définition des pages autorisées
-$pages = ['login'];
+$pages = ['login', 'signon'];
 
 include 'common/navbar.php';
 
