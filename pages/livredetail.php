@@ -28,7 +28,7 @@ include('common/config.php'); ?>
 
             <p>Genre : <?php echo $livre["genre"]; ?></p>
 
-            <p>Statut : <?php echo $livre["statut ENUM"]; ?></p>
+            <p>Statut : <?php echo $livre["statut"]; ?></p>
 
 
             <?php

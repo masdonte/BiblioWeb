@@ -8,17 +8,13 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     $password = $_POST['password'];
 
     // Vérifier si l'utilisateur existe
-    $stmt = $pdo->prepare("SELECT * FROM utilisateurs WHERE Mail = :email");
+    $stmt = $pdo->prepare("SELECT * FROM utilisateur WHERE Mail = :email");
     $stmt->bindParam(":email", $email);
     $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    else {
-        echo 'ok'
-    }
-
     // Vérifier le mot de passe
-    if ($user && hash('sha256', $password) === $user['Mot_de_Passe']) {
+    if ($user && hash('sha256', $password) === $user['mot_de_Passe']) {
         $_SESSION['user_id'] = $user['Mail'];  // Utilisation de l'email comme identifiant de session
         $_SESSION["connected"] = true;
         header("Location: index.php");  // Redirection après connexion
@@ -41,7 +37,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
 </head>
 
 <body>
-   <!--=============== LOGIN ===============-->
+    <!--=============== LOGIN ===============-->
     <div class="login container grid" id="loginAccessRegister">
         <!--===== LOGIN ACCESS =====-->
         <div class="login__access">
@@ -73,6 +69,6 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
             </div>
         </div>
 
-/body>
+</body>
 
 </html>
