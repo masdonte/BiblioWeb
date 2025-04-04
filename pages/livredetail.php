@@ -23,7 +23,7 @@ include('common/config.php'); ?>
         // Boucle à travers chaque livre et générer une carte
         foreach ($livres as $livre) {
             ?>
-            <p> Titre : <?php echo $livre["titre"]; ?> </p>
+            <p>Titre : <?php echo $livre["titre"]; ?> </p>
             <p>Auteur : <?php echo $livre["auteur"]; ?></p>
 
             <p>Genre : <?php echo $livre["genre"]; ?></p>

@@ -9,6 +9,7 @@
 
 <body>
 
-    <h1>Erreur.</h1 </body>
+    <h1>Erreur.</h1>
+</body>
 
 </html>
