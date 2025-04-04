@@ -3,11 +3,13 @@
 $page = isset($_GET['page']) ? $_GET['page'] : 'login';
 
 // Définition des pages autorisées
-$pages = ['login', 'signon', 'livredetail'];
+$pages = ['login', 'signon', 'livredetail', 'home'];
+
 
 if ($page !== 'login') {
     include 'common/navbar.php';
 }
+
 
 // Vérification et inclusion de la bonne page
 if (in_array($page, $pages)) {
