@@ -1,6 +1,13 @@
 <?php
 session_start();
-include './common/config.php';
+try {
+    $pdo = new PDO("mysql:host=localhost;dbname=biblio_db", "root", "");
+
+    //Configuration de PDO pour permettre la bonne gestion des erreurs
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Erreur : " . $e->getMessage());
+}
 
 // === 2. TRAITEMENT DE L'INSCRIPTION ===
 if (isset($_POST["email"]) && isset($_POST["password"])) {
@@ -25,7 +32,6 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
         if ($stmt->execute()) {
             echo "
 <script>alert('Compte créé avec succès !');</script>";
-
 
             header("Location: login.php"); // Redirection vers connexion
             exit();
@@ -55,12 +61,12 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
 
     <input type="email" name="email">
     <label for="emailCreate" class="login__label">Email</label>
-
+<br>
     <input type="password" name="password" required placeholder=" " class="login__input">
     <label for="passwordCreate" class="login__label">Mot de Passe</label>
-
+<br>
     <button type="submit" class="login__button">Créer un compte</button>
-
+<br>
     <p>Déjà un compte ? </p>
     <button id="loginButtonAccess">Se connecter</button>
 </body>

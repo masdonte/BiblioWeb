@@ -1,6 +1,13 @@
 <?php
 session_start();
-include './common/config.php';
+try {
+    $pdo = new PDO("mysql:host=localhost;dbname=biblio_db", "root", "");
+
+    //Configuration de PDO pour permettre la bonne gestion des erreurs
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Erreur : " . $e->getMessage());
+}
 
 // === 1. TRAITEMENT DE LA CONNEXION ===
 if (isset($_POST['email']) && isset($_POST['password'])) {
@@ -8,14 +15,14 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     $password = $_POST['password'];
 
     // Vérifier si l'utilisateur existe
-    $stmt = $pdo->prepare("SELECT * FROM utilisateur WHERE Mail = :email");
+    $stmt = $pdo->prepare("SELECT * FROM utilisateurs WHERE email = :email");
     $stmt->bindParam(":email", $email);
     $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     // Vérifier le mot de passe
-    if ($user && hash('sha256', $password) === $user['mot_de_Passe']) {
-        $_SESSION['user_id'] = $user['Mail'];  // Utilisation de l'email comme identifiant de session
+    if ($user && hash('sha256', $password) === $user['mot_de_passe']) {
+        $_SESSION['user_id'] = $user['email'];  // Utilisation de l'email comme identifiant de session
         $_SESSION["connected"] = true;
         header("Location: index.php");  // Redirection après connexion
         exit();
