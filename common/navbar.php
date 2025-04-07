@@ -11,8 +11,8 @@
 <body>
     <nav>
         <ul>
-            <li><a href="../pages/signon.php">Création de compte</a></li>
-            <li><a href="../pages/login.php">Connexion</a></li>
+            <li><a href="../index.php?page=signon.php">Création de compte</a></li>
+            <li><a href="../index.php?page=login.php">Connexion</a></li>
 
         </ul>
     </nav>
