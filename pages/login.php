@@ -40,7 +40,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
 
 </head>
 
@@ -69,11 +69,8 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
                     <button type="submit" class="login__button">Connexion</button>
                 </form>
 
-
-                <p class="login__switch">
-                    Pas de compte ?
-                    <button id="loginButtonRegister">Créer un compte</button>
-                </p>
+                Pas de compte ?
+                <button><a href="../index.php?page=signon">Création de compte</a></button>
             </div>
         </div>
 

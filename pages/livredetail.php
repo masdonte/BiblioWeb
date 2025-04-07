@@ -1,5 +1,6 @@
 <?php
 // include("../include/permission.php");
+
 include('common/config.php'); ?>
 
 <!DOCTYPE html>

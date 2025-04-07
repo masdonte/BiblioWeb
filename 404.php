@@ -10,6 +10,9 @@
 <body>
 
     <h1>Erreur.</h1>
+    <li><a href="../index.php?page=home">Retourner sur la page d'accueil</a></li>
+
+
 </body>
 
 </html>
