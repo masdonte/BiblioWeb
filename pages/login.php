@@ -1,7 +1,7 @@
 <?php
 session_start();
 try {
-    $pdo = new PDO("mysql:host=localhost;dbname=biblio_db", "root", "");
+    $pdo = new PDO("mysql:host=localhost;dbname=bdd", "root", "");
 
     //Configuration de PDO pour permettre la bonne gestion des erreurs
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -30,6 +30,28 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
         echo "<script>alert('Identifiants incorrects !');</script>";
     }
 }
+if (isset($_POST['email']) && isset($_POST['password'])) {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    // Vérifier si l'utilisateur existe
+    $stmt = $pdo->prepare("SELECT * FROM utilisateurs WHERE email = :email");
+    $stmt->bindParam(":email", $email);
+    $stmt->execute();
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // Vérifier le mot de passe
+    if ($user && hash('sha256', $password) === $user['mot_de_passe']) {
+        $_SESSION['user_id'] = $user['email'];  // Utilisation de l'email comme identifiant de session
+        $_SESSION["connected"] = true;
+        echo "<script>alert('Identifiants incorrects !');</script>";
+        header("Location: index.php");  // Redirection après connexion
+        exit();
+    } else {
+        echo "<script>alert('Identifiants incorrects !');</script>";
+    }
+}
+
 
 ?>
 
@@ -70,7 +92,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
                 </form>
 
                 Pas de compte ?
-                <button><a href="../index.php?page=signon">Création de compte</a></button>
+                <button><a href="../Biblioweb/index.php?page=signon">Création de compte</a></button>
             </div>
         </div>
 

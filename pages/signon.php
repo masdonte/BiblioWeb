@@ -34,6 +34,10 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
         }
     }
 }
+
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -63,7 +67,7 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
 
     <p>Déjà un compte ?</p>
 
-    <button><a href="../index.php?page=login">Se connecter</a></button>
+    <button><a href="../Biblioweb/index.php?page=login">Se connecter</a></button>
     </form>
 </body>
 

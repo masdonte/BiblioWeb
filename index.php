@@ -14,7 +14,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'login';
 // Définition des pages autorisées
 $pages = ['login', 'signon', 'livredetail', 'home'];
 
-if ($page !== 'login') {
+if ($page !== 'login' && $page !== 'signon') {
     include 'common/navbar.php';
 }
 
