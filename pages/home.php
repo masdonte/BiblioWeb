@@ -10,7 +10,10 @@
     <h1>Bienvenue sur Biblioweb.</h1>
     <h2>Le lieu où trouver vos livres.</h2>
 
-    <h2>Vous ne savez pas par où commencer ?</h2>
+    <?php if !==(!isset($_SESSION['connected']) || !$_SESSION['connected']) {
+   echo ' <h2>Vous ne savez pas par où commencer ?</h2>'
+    }?>
+    ;
 
 </body>
 
