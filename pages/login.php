@@ -9,10 +9,22 @@ try {
     die("Erreur : " . $e->getMessage());
 }
 
+define('URL', 'http://localhost/BiblioWeb/');
+
+
 // === 1. TRAITEMENT DE LA CONNEXION ===
 if (isset($_POST['email']) && isset($_POST['password'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
+
+    // Cas spécial pour l'administrateur
+    if ($email === 'admin@biblioweb.com' && $password === 'admin123') {
+        $_SESSION['user_id'] = 'admin@biblioweb.com';
+        $_SESSION['connected'] = true;
+        $_SESSION['is_admin'] = true; // facultatif pour distinguer l'admin
+    header(header: 'Location: '.URL.'pages/admin/admin_dashboard.php');
+        exit();
+    }
 
     // Vérifier si l'utilisateur existe
     $stmt = $pdo->prepare("SELECT * FROM utilisateurs WHERE email = :email");
