@@ -12,10 +12,10 @@ try {
 $page = isset($_GET['page']) ? $_GET['page'] : 'login';
 
 // Définition des pages autorisées
-$pages = ['login', 'signon', 'livredetail', 'home'];
+$pages = ['login', 'signon', 'livredetail', 'home','livres'];
 
 if ($page !== 'login' && $page !== 'signon') {
-    include 'common/navbar.php';
+    include 'common/header.php';
 }
 
 // Vérification et inclusion de la bonne page
