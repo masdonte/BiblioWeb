@@ -7,16 +7,11 @@ try {
 }
 
 
-
 // Récupération de la route depuis l'URL
-$page = isset($_GET['page']) ? $_GET['page'] : 'login';
+$page = isset($_GET['page']) ? $_GET['page'] : 'home';
 
 // Définition des pages autorisées
-$pages = ['login', 'signon', 'livredetail', 'home'];
-
-if ($page !== 'login' && $page !== 'signon') {
-    include 'common/navbar.php';
-}
+$pages = ['login', 'signon', 'home', 'logout', ];
 
 // Vérification et inclusion de la bonne page
 if (in_array($page, $pages)) {
@@ -24,6 +19,8 @@ if (in_array($page, $pages)) {
 } else {
     include '404.php';
 }
+
+
 ?>
 
 <!DOCTYPE html>
