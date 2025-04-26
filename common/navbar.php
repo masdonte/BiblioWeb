@@ -11,8 +11,8 @@
 <body>
     <nav>
         <ul>
-            <li><a href="../Biblioweb/index.php?page=signon">Création de compte</a></li>
-            <li><a href="../Biblioweb/index.php?page=login">Connexion</a></li>
+            <li><a href="../BiblioWeb/index.php?page=signon">Création de compte</a></li>
+            <li><a href="../BiblioWeb/index.php?page=login">Connexion</a></li>
 
         </ul>
     </nav>

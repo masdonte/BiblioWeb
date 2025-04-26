@@ -1,7 +1,7 @@
 <?php
 session_start();
 try {
-    $pdo = new PDO("mysql:host=localhost;dbname=bdd", "root", "");
+    $pdo = new PDO("mysql:host=localhost;dbname=biblio_db", "root", "");
 
     //Configuration de PDO pour permettre la bonne gestion des erreurs
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
