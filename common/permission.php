@@ -9,13 +9,13 @@ define('URL', 'http://localhost/BiblioWeb/');
 // Vérifiez si l'utilisateur est connecté
 if (!isset($_SESSION['connected']) || !$_SESSION['connected']) {
     echo "<script>alert('Connectez-vous !');</script>";
-    header('Location: ' . URL . 'index.php?pages=login.php');
+    header(header: 'Location: ' .URL. 'index.php?pages=login.php');
     exit();
 }
 
-if ($_SESSION['role'] !== 'admin') {
+if ($_SESSION['is_admin'] = false;) {
     echo "<script>alert('Vous n'y avez pas accès');</script>";
-    header('Location: ' . URL . 'index.php?pages=home.php');
+    header('Location: ' .URL. 'index.php?pages=home.php');
 
     exit();
 }
