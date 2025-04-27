@@ -1,4 +1,5 @@
 <?php
+session_start();
 try {
     $pdo = new PDO("mysql:host=localhost;dbname=biblio_db", "root", "");
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -11,14 +12,11 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liste des livres</title>
-    
-   
-       
 </head>
 
 <body>
     <?php 
-    // Utilisation de $pdo au lieu de $recup qui n'existe pas
+   
     $livre = $pdo->prepare("SELECT * FROM livres");
     $livre->execute();
     $affich = $livre->fetchAll(PDO::FETCH_ASSOC);
@@ -33,12 +31,41 @@ try {
                 <p>Nom de l'auteur : <?php echo ($affichage["auteur"]); ?></p>
                 <p>Le genre : <?php echo ($affichage["genre"]); ?></p>
                 <p>Le statut : <?php echo ($affichage["statut"]); ?></p>
+
+                
+                <form action="" method="POST">
+                    <input type="hidden" name="livre_id" value="<?= $affichage['id']; ?>">
+                    <button type="submit" name="emprunter">Emprunter ce livre</button>
+                </form>
             </div>
         </div>
     <?php 
     }
-    ?>
 
-    <button>Emprunter ce livre</button>
+    if (isset($_POST['emprunter']) && isset($_POST['livre_id'])) {
+        $livre_id = $_POST['livre_id'];
+
+        // Vérifiez si l'utilisateur est connecté
+        if (!isset($_SESSION['id_utilisateur'])) {
+            echo "<script>alert('Vous devez être connecté pour emprunter un livre.');</script>";
+         
+             header("Location: login.php");
+            exit; 
+        }
+
+        $id_utilisateur = $_SESSION['id_utilisateur']; 
+
+        $stmt = $pdo->prepare("INSERT INTO emprunts (id_utilisateur, id_livre) VALUES (:id_utilisateur, :id_livre)");
+        $stmt->bindParam(':id_utilisateur', $id_utilisateur);
+        $stmt->bindParam(':id_livre', $livre_id);
+
+        
+        if ($stmt->execute()) {
+            echo "<script>alert('Livre emprunté avec succès !');</script>";
+        } else {
+            echo "<script>alert('Erreur lors de l\'emprunt du livre.');</script>";
+        }
+    }
+    ?>
 </body>
 </html>
