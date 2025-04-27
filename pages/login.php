@@ -22,7 +22,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
             'email' => $email,
             'role' => 'admin'
         ];
-        header('Location: ' . URL . 'pages/admin/admin_dashboard.php');
+        header('Location: ' . URL . 'pages/admin/listeutilisateur.php');
         exit();
     }
 
