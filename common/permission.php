@@ -13,7 +13,7 @@ if (!isset($_SESSION['connected']) || !$_SESSION['connected']) {
     exit();
 }
 
-if ($_SESSION['is_admin'] = false;) {
+if ($_SESSION['is_admin'] = false) {
     echo "<script>alert('Vous n'y avez pas accès');</script>";
     header('Location: ' .URL. 'index.php?pages=home.php');
 
