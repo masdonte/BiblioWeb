@@ -21,7 +21,7 @@ if (!isset($_SESSION)) {
             <?php if ($_SESSION['user']['role'] == 'admin'): ?>
                 <a href="<?= URL ?>pages/admin/listes_utilisateurs.php">Listes Utilisateurs</a> |
                 <a href="<?= URL ?>pages/admin/detail_utilisateurs.php">Détails d'utilisateurs</a> |
-                <a href="<?= URL ?>pages/admin/gestion_livres.php">Gestion des livres</a> |
+                <a href="<?= URL ?>pages/admin/gestionlivre.php">Gestion des livres</a> |
                 <a href="<?= URL ?>pages/admin/listes_livres.php">Listes de livres</a> |
             <?php endif; ?>
         <?php endif; ?>
