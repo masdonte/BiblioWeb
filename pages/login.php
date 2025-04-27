@@ -25,6 +25,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     //
     if ($user && hash('sha256', $password) === $user['mot_de_passe']) {
         $_SESSION['user'] = [
+            'id' => $user['id'],
             'email' => $user['email'],
             'role' => $user['role']
         ];
