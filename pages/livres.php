@@ -1,6 +1,4 @@
 <?php
-
-
 try {
     $pdo = new PDO("mysql:host=localhost;dbname=biblio_db", "root", "");
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -38,7 +36,9 @@ try {
             </div>
         </div>
     <?php 
-    } 
+    }
     ?>
+
+    <button>Emprunter ce livre</button>
 </body>
 </html>
