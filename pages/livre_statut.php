@@ -29,8 +29,6 @@ try {
             <span class="blog-time"></span>
             <div class="description">
                 <p>Nom du livre : <?php echo ($affichage["titre"]); ?></p>
-                <p>Nom de l'auteur : <?php echo ($affichage["auteur"]); ?></p>
-                <p>Le genre : <?php echo ($affichage["genre"]); ?></p>
                 <p>Le statut : <?php echo ($affichage["statut"]); ?></p>
 
 
