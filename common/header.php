@@ -15,7 +15,7 @@ if (!isset($_SESSION)) {
             <?php if ($_SESSION['user']['role'] !== 'admin'): ?>
                 <a href="<?= URL ?>index.php?page=livres">Détails des livres</a> |
                 <a href="<?= URL ?>index.php?page=emprunt">Mes Emprunts</a> |
-                <a href="<?= URL ?>index.php?page=livres_status">Livres status</a> |
+                <a href="<?= URL ?>index.php?page=livre_statut">Livres status</a> |
             <?php endif; ?>
             <a href="<?= URL ?>index.php?page=logout">Déconnexion</a> |
             <?php if ($_SESSION['user']['role'] == 'admin'): ?>
