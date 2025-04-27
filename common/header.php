@@ -7,17 +7,17 @@ if (!isset($_SESSION)) {
 <header>
     <h1>Bibliothèque en ligne</h1>
     <nav>
-        <a href="<?= URL ?>index.php?page=home">Accueil</a> 
+        <a href="<?= URL ?>index.php?page=home">Accueil</a> |
         <?php if (!isset($_SESSION['user'])): ?>
-            <a href="<?= URL ?>index.php?page=signon">Inscription</a> 
-            <a href="<?= URL ?>index.php?page=login">Connexion</a>
+            <a href="<?= URL ?>index.php?page=signon">Inscription</a> |
+            <a href="<?= URL ?>index.php?page=login">Connexion</a> |
         <?php else: ?>
-            <a href="<?= URL ?>pages/livres.php">Livres</a> 
+            <a href="<?= URL ?>pages/livres.php">Livres</a> |
             <a href="<?= URL ?>pages/emprunts.php">Mes Emprunts</a> |
-            <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin'): ?>
+            <?php if (isset($_SESSION['user']) && $_SESSION['user']['role'] == 'admin'): ?>
                 <a href="<?= URL ?>pages/admin/admin_dashboard.php">Admin</a> |
             <?php endif; ?>
-            <a href="<?= URL ?>index.php?page=logout">Déconnexion</a>
+            <a href="<?= URL ?>index.php?page=logout">Déconnexion</a> |
         <?php endif; ?>
     </nav>
 </header>
