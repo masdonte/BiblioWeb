@@ -1,23 +1,24 @@
-<html lang="en">
+<?php
+include 'common/header.php';
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+try {
+    $pdo = new PDO("mysql:host=localhost;dbname=biblio_db", "root", "");
 
-<body>
-    <h1>Bienvenue sur Biblioweb.</h1>
-    <h2>Le lieu où trouver vos livres.</h2>
+    //Configuration de PDO pour permettre la bonne gestion des erreurs
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Erreur : " . $e->getMessage());
+}
+?>
 
-    <?php
-    session_start();
-    if (!isset($_SESSION['connected']) || !$_SESSION['connected']) {
-        echo '<h2>Vous ne savez pas par où commencer ?</h2>';
-    }
-    ?>
-    ;
 
-</body>
+<?php if (isset($_SESSION['user'])): ?>
+    <h2>Bienvenue !</h2>
+    <p>Que souhaitez-vous faire aujourd'hui ?</p>
 
-</html>
+<?php else: ?>
+    <h2>Bienvenue sur la Bibliothèque en ligne !</h2>
+    <p>Inscrivez-vous ou connectez-vous pour accéder à notre collection de livres.</p>
+
+<?php endif; ?>
+</div>
