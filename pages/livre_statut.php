@@ -62,15 +62,16 @@ $affich = $livre->fetchAll(PDO::FETCH_ASSOC);
     <?php foreach ($affich as $affichage) { ?>
         <div class="card" style="border:1px solid #ccc; padding:10px; margin:10px;">
             <div class="description">
-                <p><strong>Nom du livre :</strong> <?= htmlspecialchars($affichage["titre"]); ?></p>
-                <p><strong>Statut :</strong> <?= htmlspecialchars($affichage["statut"]); ?></p>
+                <p>Nom du livre : <?php echo ($affichage["titre"]); ?></p>
+                <p>Nom de l'auteur : <?php echo ($affichage["auteur"]); ?></p>
+                <p>Le genre : <?php echo ($affichage["genre"]); ?></p>
+                <p>Le statut : <?php echo ($affichage["statut"]); ?></p>
 
-                <?php if ($affichage['statut'] == 'disponible') { ?>
-                    <form action="" method="POST">
-                        <input type="hidden" name="livre_id" value="<?= $affichage['id']; ?>">
-                        <button type="submit" name="emprunter">Emprunter ce livre</button>
-                    </form>
-                <?php } ?>
+
+                <form action="" method="POST">
+                    <input type="hidden" name="livre_id" value="<?= $affichage['id']; ?>">
+                    <button type="submit" name="emprunter">Emprunter ce livre</button>
+                </form>
             </div>
         </div>
     <?php } ?>
