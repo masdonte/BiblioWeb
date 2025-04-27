@@ -11,14 +11,15 @@ try {
 ?>
 
 
-<?php if (isset($_GET['logout']) && $_GET['logout'] === 'success'): ?> // permet d'afficher un msg d'alerte après décnonexion
+<?php if (isset($_GET['logout']) && $_GET['logout'] === 'success'): ?> // permet d'afficher un msg d'alerte après
+    décnonexion
     <script>
         alert("Vous avez été déconnecté avec succès !");
     </script>
 <?php endif; ?>
 
 <?php if (isset($_SESSION['user'])): ?>
-    <h2>Bienvenue !</h2>
+    <h2>Bienvenue, <?= htmlspecialchars($_SESSION['user']['nom']); ?> !</h2>
     <p>Que souhaitez-vous faire aujourd'hui ?</p>
 
 <?php else: ?>
