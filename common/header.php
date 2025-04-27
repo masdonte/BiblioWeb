@@ -12,12 +12,18 @@ if (!isset($_SESSION)) {
             <a href="<?= URL ?>index.php?page=signon">Inscription</a> |
             <a href="<?= URL ?>index.php?page=login">Connexion</a> |
         <?php else: ?>
-            <a href="<?= URL ?>index.php?page=livres">Livres</a> |
-            <a href="<?= URL ?>index.php?page=emprunt">Mes Emprunts</a> |
-            <?php if (isset($_SESSION['user']) && $_SESSION['user']['role'] == 'admin'): ?>
-                <a href="<?= URL ?>pages/admin/admin_dashboard.php">Admin</a> |
+            <?php if ($_SESSION['user']['role'] !== 'admin'): ?>
+                <a href="<?= URL ?>index.php?page=livres">Détails des livres</a> |
+                <a href="<?= URL ?>index.php?page=emprunt">Mes Emprunts</a> |
+                <a href="<?= URL ?>index.php?page=livres_status">Livres status</a> |
             <?php endif; ?>
             <a href="<?= URL ?>index.php?page=logout">Déconnexion</a> |
+            <?php if ($_SESSION['user']['role'] == 'admin'): ?>
+                <a href="<?= URL ?>pages/admin/listes_utilisateurs.php">Listes Utilisateurs</a> |
+                <a href="<?= URL ?>pages/admin/detail_utilisateurs.php">Détails d'utilisateurs</a> |
+                <a href="<?= URL ?>pages/admin/gestion_livres.php">Gestion des livres</a> |
+                <a href="<?= URL ?>pages/admin/listes_livres.php">Listes de livres</a> |
+            <?php endif; ?>
         <?php endif; ?>
     </nav>
 </header>

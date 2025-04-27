@@ -1,8 +1,6 @@
 <?php
 include 'common/header.php';
 
-
-
 try {
     $pdo = new PDO("mysql:host=localhost;dbname=biblio_db", "root", "");
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -10,55 +8,43 @@ try {
     die("Erreur : " . $e->getMessage());
 }
 
-// === TRAITEMENT DE L'INSCRIPTION ===
-if (isset($_POST["email"]) && isset($_POST["password"])) {
+if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["nom"])) {
+    $nom = htmlspecialchars($_POST["nom"]);
     $email = htmlspecialchars($_POST["email"]);
-    $password = password_hash($_POST["password"], PASSWORD_DEFAULT); // Hash sécurisé moderne
+    $password = password_hash($_POST["password"], PASSWORD_DEFAULT); 
 
-    // Vérifier si l'email existe déjà
     $stmt = $pdo->prepare("SELECT * FROM utilisateurs WHERE email = :email");
     $stmt->bindParam(':email', $email);
     $stmt->execute();
 
-
-
     if ($stmt->rowCount() > 0) {
         echo "<script>alert('Cet email est déjà utilisé.');</script>";
     } else {
-
-        // Insérer l'utilisateur
-        $stmt = $pdo->prepare("INSERT INTO utilisateurs (email, mot_de_passe, role) VALUES (:email, :password, 'standard')");
+        $stmt = $pdo->prepare("INSERT INTO utilisateurs (nom, email, mot_de_passe, role) VALUES (:nom, :email, :password, 'standard')");
+        $stmt->bindParam(':nom', $nom);
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':password', $password);
 
         if ($stmt->execute()) {
-            // Récupérer l'utilisateur fraîchement créé
-            $stmt = $pdo->prepare("SELECT id, email, role FROM utilisateurs WHERE email = :email");
+            $stmt = $pdo->prepare("SELECT id, nom, email, role FROM utilisateurs WHERE email = :email");
             $stmt->bindParam(':email', $email);
             $stmt->execute();
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            // Créer une session utilisateur
             $_SESSION['user'] = [
                 'id' => $user['id'],
+                'nom' => $user['nom'],  
                 'email' => $user['email'],
                 'role' => $user['role']
             ];
 
-
-            if ($stmt->execute()) {
-                header("Location:/BiblioWeb/index.php?page=home"); // Redirection après inscription
-                exit();
-            } else {
-                echo "<script>alert('Erreur lors de l\'inscription.');</script>";
-            }
+            header("Location:/BiblioWeb/index.php?page=home"); 
+            exit();
+        } else {
+            echo "<script>alert('Erreur lors de l\'inscription.');</script>";
         }
     }
 }
-
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -71,15 +57,19 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
 </head>
 
 <body>
-    <!--===== FORMULAIRE INSCRIPTION =====-->
+
     <form action="" method="POST" class="login__form">
         <h1>Créer un compte</h1>
 
-        <input type="email" name="email" required>
+        <input type="text" name="nom" required placeholder="Votre nom" class="login__input">
+        <label for="nomCreate" class="login__label">Nom</label>
+        <br>
+
+        <input type="email" name="email" required placeholder="Votre email" class="login__input">
         <label for="emailCreate" class="login__label">Email</label>
         <br>
 
-        <input type="password" name="password" required placeholder=" " class="login__input">
+        <input type="password" name="password" required placeholder="Votre mot de passe" class="login__input">
         <label for="passwordCreate" class="login__label">Mot de passe</label>
         <br>
 
@@ -89,7 +79,6 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
     <p>Déjà un compte ?</p>
 
     <button><a href="../Biblioweb/index.php?page=login">Se connecter</a></button>
-    </form>
 </body>
 
 </html>
