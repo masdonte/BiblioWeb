@@ -6,15 +6,15 @@ if (!isset($_SESSION)) {
 <header>
     <h1>Bibliothèque en ligne</h1>
     <nav>
-        <a href="<?= URL ?>index.php?page=home">Accueil</a> 
+        <a href="../BiblioWeb/index.php?page=home">Accueil</a> |
         <?php if (!isset($_SESSION['user'])): ?>
-            <a href="<?= URL ?>index.php?page=signon">Inscription</a> 
-            <a href="<?= URL ?>index.php?page=login">Connexion</a>
+            <a href="../BiblioWeb/index.php?page=signon">Inscription</a> |
+            <a href="../BiblioWeb/index.php?page=login">Connexion</a>
         <?php else: ?>
-            <a href="<?= URL ?>pages/livres.php">Livres</a> 
-            <a href="<?= URL ?>pages/emprunts.php">Mes Emprunts</a> 
-            <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin'): ?>
-                <a href="<?= URL ?>pages/admin/admin_dashboard.php">Admin</a> 
+            <a href="pages/livres.php">Livres</a> |
+            <a href="pages/emprunts.php">Mes Emprunts</a> |
+            <?php if ($_SESSION['user']['role'] == 'admin'): ?>
+                <a href="/BiblioWeb/pages/admin/admin_dashboard.php">Admin</a> |
             <?php endif; ?>
             <a href="/BiblioWeb/index.php?page=logout">Déconnexion</a>
         <?php endif; ?>

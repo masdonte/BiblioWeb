@@ -1,5 +1,4 @@
 <?php
-include 'common/header.php';
 
 try {
     $pdo = new PDO("mysql:host=localhost;dbname=biblio_db", "root", "");
@@ -11,7 +10,8 @@ try {
 }
 ?>
 
-<?php if (isset($_GET['logout']) && $_GET['logout'] === 'success'): ?>
+
+<?php if (isset($_GET['logout']) && $_GET['logout'] === 'success'): ?> // permet d'afficher un msg d'alerte après décnonexion
     <script>
         alert("Vous avez été déconnecté avec succès !");
     </script>
@@ -26,4 +26,3 @@ try {
     <p>Inscrivez-vous ou connectez-vous pour accéder à notre collection de livres.</p>
 
 <?php endif; ?>
-</div>
