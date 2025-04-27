@@ -12,8 +12,8 @@ if (!isset($_SESSION)) {
             <a href="<?= URL ?>index.php?page=signon">Inscription</a> |
             <a href="<?= URL ?>index.php?page=login">Connexion</a> |
         <?php else: ?>
-            <a href="<?= URL ?>pages/livres.php">Livres</a> |
-            <a href="<?= URL ?>pages/emprunts.php">Mes Emprunts</a> |
+            <a href="<?= URL ?>index.php?page=livres">Livres</a> |
+            <a href="<?= URL ?>index.php?page=emprunt">Mes Emprunts</a> |
             <?php if (isset($_SESSION['user']) && $_SESSION['user']['role'] == 'admin'): ?>
                 <a href="<?= URL ?>pages/admin/admin_dashboard.php">Admin</a> |
             <?php endif; ?>
