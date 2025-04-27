@@ -16,17 +16,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    // Cas spécial pour l'administrateur
-    if ($email === 'admin@biblio.com' && $password === 'admin123') {
-        $_SESSION['user'] = [
-            'email' => $email,
-            'role' => 'admin'
-        ];
-        header('Location: ' . URL . 'pages/admin/listeutilisateur.php');
-        exit();
-    }
-
-    // Vérifier si l'utilisateur existe
+    // Vérifier si l'utilisateur existe en base de données
     $stmt = $pdo->prepare("SELECT * FROM utilisateurs WHERE email = :email");
     $stmt->bindParam(":email", $email);
     $stmt->execute();
