@@ -1,5 +1,6 @@
 <?php
-session_start();
+
+include 'common/header.php';
 try {
     $pdo = new PDO("mysql:host=localhost;dbname=biblio_db", "root", "");
 
@@ -9,8 +10,6 @@ try {
     die("Erreur : " . $e->getMessage());
 }
 
-define('URL', 'http://localhost/BiblioWeb/');
-
 
 // === 1. TRAITEMENT DE LA CONNEXION ===
 if (isset($_POST['email']) && isset($_POST['password'])) {
@@ -18,11 +17,12 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     $password = $_POST['password'];
 
     // Cas spécial pour l'administrateur
-    if ($email === 'admin@biblioweb.com' && $password === 'admin123') {
-        $_SESSION['user_id'] = 'admin@biblioweb.com';
-        $_SESSION['connected'] = true;
-        $_SESSION['is_admin'] = true; // facultatif pour distinguer l'admin
-    header(header: 'Location: '.URL.'pages/admin/admin_dashboard.php');
+    if ($email === 'admin@biblio.com' && $password === 'admin123') {
+        $_SESSION['user'] = [
+            'email' => $email,
+            'role' => 'admin'
+        ];
+        header('Location: ' . URL . 'pages/admin/admin_dashboard.php');
         exit();
     }
 
@@ -54,38 +54,30 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
 </head>
 
 <body>
     <!--=============== LOGIN ===============-->
-    <div class="login container grid" id="loginAccessRegister">
-        <!--===== LOGIN ACCESS =====-->
-        <div class="login__access">
-            <h1 class="login__title">Se connecter</h1>
-            <div class="login__area">
-                <form action="" method="POST" class="login__form">
-                    <div class="login__content grid">
-                        <div class="login__box">
-                            <input type="email" name="email" id="email" required placeholder=" " class="login__input">
-                            <label for="email" class="login__label">E-mail</label>
-                            <i class="ri-mail-fill login__icon"></i>
-                        </div>
-
-                        <div class="login__box">
-                            <input type="password" name="password" id="password" required placeholder=" "
-                                class="login__input">
-                            <label for="password" class="login__label">Mot de passe</label>
-                            <i class="ri-eye-off-fill login__icon login__password" id="loginPassword"></i>
-                        </div>
-                    </div>
-                    <button type="submit" class="login__button">Connexion</button>
-                </form>
-
-                Pas de compte ?
-                <button><a href="../Biblioweb/index.php?page=signon">Création de compte</a></button>
-            </div>
+<div class="login container" id="loginAccessRegister">
+    <!--===== LOGIN ACCESS =====-->
+    <h1>Se connecter</h1>
+    <form action="" method="POST" class="login__form">
+        <div>
+            <input type="email" name="email" id="email" required placeholder="E-mail" class="login__input">
+            <label for="email">E-mail</label>
         </div>
+
+        <div>
+            <input type="password" name="password" id="password" required placeholder="Mot de passe" class="login__input">
+            <label for="password">Mot de passe</label>
+            <i class="ri-eye-off-fill login__icon login__password" id="loginPassword"></i>
+        </div>
+
+        <button type="submit" class="login__button">Connexion</button>
+    </form>
+
+    <p>Pas de compte ? <a href="../Biblioweb/index.php?page=signon">Création de compte</a></p>
+</div>
 
 </body>
 
