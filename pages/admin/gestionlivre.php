@@ -27,8 +27,6 @@ $livres = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <?php
     foreach ($livres as $livre): ?>
         <p> Le titre du livre : <?php echo $livre["titre"]; ?> </p>
-        <p> L'auteur du livre : <?php echo $livre["auteur"]; ?> </p>
-        <p> Le genre : <?php echo $livre["genre"]; ?> </p>
         <p> Statut: <?php echo $livre["statut"]; ?> </p>
         <form action="" method="POST">
             <input type="hidden" name="livre_id" value="<?= $livre['id']; ?>">
