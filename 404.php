@@ -5,12 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
 </head>
 
 <body>
+    <?php
+    define('URL', 'http://localhost/BiblioWeb/'); // https://www.php.net/manual/en/function.define.php
+    ?>
 
     <h1>Erreur.</h1>
-    <li><a href="../index.php?page=home">Retourner sur la page d'accueil</a></li>
+
+    <a href="<?= URL ?>index.php?page=home">Retourner sur la page d'accueil</a> |
+
+
 
 
 </body>
