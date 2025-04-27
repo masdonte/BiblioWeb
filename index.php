@@ -7,9 +7,8 @@ try {
 }
 
 
-
 // Récupération de la route depuis l'URL
-$page = isset($_GET['page']) ? $_GET['page'] : 'login';
+$page = isset($_GET['page']) ? $_GET['page'] : 'home';
 
 // Définition des pages autorisées
 $pages = ['login', 'signon', 'livredetail', 'home','livres'];
@@ -24,6 +23,8 @@ if (in_array($page, $pages)) {
 } else {
     include '404.php';
 }
+
+
 ?>
 
 <!DOCTYPE html>
