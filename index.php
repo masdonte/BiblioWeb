@@ -11,7 +11,7 @@ try {
 $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 
 // Définition des pages autorisées
-$pages = ['login', 'signon', 'livredetail', 'home', 'livres', 'logout'];
+$pages = ['login', 'signon', 'livredetail', 'home', 'livres', 'logout', 'emprunt'];
 
 if ($page !== 'login' && $page !== 'signon') {
     include 'common/header.php';
