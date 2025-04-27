@@ -1,3 +1,3 @@
 <?php
-include '../../common/permission.php'; 
+include '../../common/header.php';
 ?>

@@ -1,5 +1,8 @@
 <?php
-session_start();
+include 'common/header.php';
+
+
+
 try {
     $pdo = new PDO("mysql:host=localhost;dbname=biblio_db", "root", "");
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -17,20 +20,38 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
     $stmt->bindParam(':email', $email);
     $stmt->execute();
 
+
+
     if ($stmt->rowCount() > 0) {
         echo "<script>alert('Cet email est déjà utilisé.');</script>";
     } else {
+
         // Insérer l'utilisateur
-        $stmt = $pdo->prepare("INSERT INTO utilisateurs (email, mot_de_passe) VALUES (:email, :password)");
+        $stmt = $pdo->prepare("INSERT INTO utilisateurs (email, mot_de_passe, role) VALUES (:email, :password, 'standard')");
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':password', $password);
 
         if ($stmt->execute()) {
-            echo "<script>alert('Compte créé avec succès !');</script>";
-            header("Location: login.php"); // Redirection après inscription
-            exit();
-        } else {
-            echo "<script>alert('Erreur lors de l\'inscription.');</script>";
+            // Récupérer l'utilisateur fraîchement créé
+            $stmt = $pdo->prepare("SELECT id, email, role FROM utilisateurs WHERE email = :email");
+            $stmt->bindParam(':email', $email);
+            $stmt->execute();
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            // Créer une session utilisateur
+            $_SESSION['user'] = [
+                'id' => $user['id'],
+                'email' => $user['email'],
+                'role' => $user['role']
+            ];
+
+
+            if ($stmt->execute()) {
+                header("Location:/BiblioWeb/index.php?page=home"); // Redirection après inscription
+                exit();
+            } else {
+                echo "<script>alert('Erreur lors de l\'inscription.');</script>";
+            }
         }
     }
 }

@@ -11,6 +11,11 @@ try {
 }
 ?>
 
+<?php if (isset($_GET['logout']) && $_GET['logout'] === 'success'): ?>
+    <script>
+        alert("Vous avez été déconnecté avec succès !");
+    </script>
+<?php endif; ?>
 
 <?php if (isset($_SESSION['user'])): ?>
     <h2>Bienvenue !</h2>
