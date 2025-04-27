@@ -34,13 +34,17 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
 
     // Vérifier le mot de passe
     if ($user && hash('sha256', $password) === $user['mot_de_passe']) {
-        $_SESSION['user_id'] = $user['email'];  // Utilisation de l'email comme identifiant de session
+        $_SESSION['user'] = [
+            'email' => $user['email'],
+            'role' => $user['role'] // On ajoute le rôle récupéré depuis la base de données
+        ];
         $_SESSION["connected"] = true;
         header("Location: index.php");  // Redirection après connexion
         exit();
     } else {
         echo "<script>alert('Identifiants incorrects !');</script>";
     }
+
 }
 
 
@@ -58,26 +62,27 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
 
 <body>
     <!--=============== LOGIN ===============-->
-<div class="login container" id="loginAccessRegister">
-    <!--===== LOGIN ACCESS =====-->
-    <h1>Se connecter</h1>
-    <form action="" method="POST" class="login__form">
-        <div>
-            <input type="email" name="email" id="email" required placeholder="E-mail" class="login__input">
-            <label for="email">E-mail</label>
-        </div>
+    <div class="login container" id="loginAccessRegister">
+        <!--===== LOGIN ACCESS =====-->
+        <h1>Se connecter</h1>
+        <form action="" method="POST" class="login__form">
+            <div>
+                <input type="email" name="email" id="email" required placeholder="E-mail" class="login__input">
+                <label for="email">E-mail</label>
+            </div>
 
-        <div>
-            <input type="password" name="password" id="password" required placeholder="Mot de passe" class="login__input">
-            <label for="password">Mot de passe</label>
-            <i class="ri-eye-off-fill login__icon login__password" id="loginPassword"></i>
-        </div>
+            <div>
+                <input type="password" name="password" id="password" required placeholder="Mot de passe"
+                    class="login__input">
+                <label for="password">Mot de passe</label>
+                <i class="ri-eye-off-fill login__icon login__password" id="loginPassword"></i>
+            </div>
 
-        <button type="submit" class="login__button">Connexion</button>
-    </form>
+            <button type="submit" class="login__button">Connexion</button>
+        </form>
 
-    <p>Pas de compte ? <a href="../Biblioweb/index.php?page=signon">Création de compte</a></p>
-</div>
+        <p>Pas de compte ? <a href="../Biblioweb/index.php?page=signon">Création de compte</a></p>
+    </div>
 
 </body>
 
