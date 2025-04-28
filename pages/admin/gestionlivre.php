@@ -1,56 +1,60 @@
 <?php
+
 include '../../common/header.php';
+
+
 
 try {
     $pdo = new PDO("mysql:host=localhost;dbname=biblio_db", "root", "");
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
-    die("Erreur de connexion : " . $e->getMessage());
+    die("Erreur : " . $e->getMessage());
 }
 
-$stmt = $pdo->prepare("SELECT id, titre, auteur, genre, statut FROM livres");
+
+
+
+// Vérifier que l'emprunt appartient bien à l'utilisateur connecté
+$stmt = $pdo->prepare("SELECT * FROM livres");
 $stmt->execute();
-$livres = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$livres = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+
 
 ?>
 
-<html lang="en">
+<!DOCTYPE html>
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
 </head>
 
 <body>
+    <h1>Gestion des livres</h1>
 
-    <?php
-    foreach ($livres as $livre): ?>
-        <p> Le titre du livre : <?php echo $livre["titre"]; ?> </p>
-        <p> Statut: <?php echo $livre["statut"]; ?> </p>
-        <form action="" method="POST">
-            <input type="hidden" name="livre_id" value="<?= $livre['id']; ?>">
-            <button type="submit" name="delete">Supprimer</button>
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+                <th>Titre du livre</th>
+                <th>Auteur</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($livres as $livre): ?>
+                <tr>
+                    <td><?= htmlspecialchars(string: $livres['titre']) ?></td>
+                    <td><?= htmlspecialchars($livres['auteur']) ?></td>
+                    <td><?= htmlspecialchars($livres['statut']) ?></td>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
 
-        </form>
-
-    <?php endforeach; ?>
-
-    <?php
-    if (isset($_POST['delete']) && isset($_POST['livre_id'])) {
-        $livre_id = $_POST['livre_id'];
-
-        $stmt = $pdo->prepare("DELETE FROM livres WHERE id = :id");
-        $stmt->bindParam(':id', $livre_id);
-        if ($stmt->execute()) {
-            echo "<script>alert('livre supprimé');</script>";
-        } else {
-            echo "<script>alert('erreur lors de la supression du livre');</script>";
-        }
-    }
-
-
-    ?>
 </body>
 
 </html>
