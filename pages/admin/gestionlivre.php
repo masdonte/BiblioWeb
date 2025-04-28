@@ -136,9 +136,9 @@ $afficher_formulaire_ajout = isset($_POST['afficher_formulaire_ajout']);
             <input type="text" id="titre" name="titre" value="<?= htmlspecialchars($livre_a_modifier['titre']) ?>" required><br>
             <label for="statut">Statut :</label>
             <input type="text" id="statut" name="statut" value="<?= htmlspecialchars($livre_a_modifier['statut']) ?>" required><br>
-            <label for="auteur">Auteur :</label> <!-- Nouveau champ -->
+            <label for="auteur">Auteur :</label> 
             <input type="text" id="auteur" name="auteur" value="<?= htmlspecialchars($livre_a_modifier['auteur']) ?>" required><br>
-            <label for="genre">Genre :</label> <!-- Nouveau champ -->
+            <label for="genre">Genre :</label> 
             <input type="text" id="genre" name="genre" value="<?= htmlspecialchars($livre_a_modifier['genre']) ?>" required><br>
             <input type="submit" value="Enregistrer">
         </form>
@@ -151,9 +151,9 @@ $afficher_formulaire_ajout = isset($_POST['afficher_formulaire_ajout']);
             <input type="text" id="titre" name="titre" required><br>
             <label for="statut">Statut :</label>
             <input type="text" id="statut" name="statut" required><br>
-            <label for="auteur">Auteur :</label> <!-- Nouveau champ -->
+            <label for="auteur">Auteur :</label> 
             <input type="text" id="auteur" name="auteur" required><br>
-            <label for="genre">Genre :</label> <!-- Nouveau champ -->
+            <label for="genre">Genre :</label> 
             <input type="text" id="genre" name="genre" required><br>
             <input type="submit" name="ajouter_livre" value="Ajouter">
         </form>
