@@ -33,6 +33,7 @@ if (isset($_POST['emprunter']) && isset($_POST['livre_id'])) {
             $updateLivre->execute();
 
             echo "<script>alert('livre emprunté  ');</script>";
+            header('Location: index.php?page=emprunt');
             exit;
         } else {
             echo "<script>alert('Erreur lors de l\'emprunt du livre.');</script>";
