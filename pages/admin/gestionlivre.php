@@ -64,7 +64,7 @@ if (isset($_POST['ajouter_livre'])) {
     $stmt->bindParam(':genre', $genre, PDO::PARAM_STR); // Nouveau champ
 
     if ($stmt->execute()) {
-        header("Location: " . $_SERVER['PHP_SELF']);
+        header('Location: /BiblioWeb/pages/admin/gestionlivre.php');
         exit;
     } else {
         echo "Erreur lors de l'ajout du livre.";
