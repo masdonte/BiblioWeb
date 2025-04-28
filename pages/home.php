@@ -11,7 +11,7 @@ try {
 ?>
 
 
-<?php if (isset($_GET['logout']) && $_GET['logout'] === 'success'): ?> //
+<?php if (isset($_GET['logout']) && $_GET['logout'] === 'success'): ?>
     <script>
         alert("Vous avez été déconnecté avec succès !");
     </script>
