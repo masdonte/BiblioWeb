@@ -63,8 +63,6 @@ $affich = $livre->fetchAll(PDO::FETCH_ASSOC);
         <div class="card" style="border:1px solid #ccc; padding:10px; margin:10px;">
             <div class="description">
                 <p>Nom du livre : <?php echo ($affichage["titre"]); ?></p>
-                <p>Nom de l'auteur : <?php echo ($affichage["auteur"]); ?></p>
-                <p>Le genre : <?php echo ($affichage["genre"]); ?></p>
                 <p>Le statut : <?php echo ($affichage["statut"]); ?></p>
 
 
