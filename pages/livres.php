@@ -16,8 +16,15 @@ try {
 </head>
 
 <body>
-    <?php
+<form action = "verif-form.php" method = "get">
+   <input type = "search" name = "terme">
+   <input type = "submit" name = "s" value = "Rechercher">   
 
+   
+
+    <?php
+   
+    
     $livre = $pdo->prepare("SELECT * FROM livres");
     $livre->execute();
     $affich = $livre->fetchAll(PDO::FETCH_ASSOC);
