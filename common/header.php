@@ -21,14 +21,14 @@ if (!isset($_SESSION)) {
             <?php if ($_SESSION['user']['role'] !== 'admin'): ?>
                 <a>Vous êtes <?= htmlspecialchars($_SESSION['user']['nom']); ?> !</a>
             <?php elseif ($_SESSION['user']['role'] == 'admin'): ?>
-                <a>Vous êtes Admin !</a>
+                
 
                 <?php if ($_SESSION['user']['role'] == 'admin'): ?>
                     <a href="<?= URL ?>pages/admin/listeutilisateur.php">Listes Utilisateurs</a> |
                     <a href="<?= URL ?>pages/admin/detailutilisateur.php">Détails d'utilisateurs</a> |
                     <a href="<?= URL ?>pages/admin/gestionlivre.php">Gestion des livres</a> |
                     <a href="<?= URL ?>pages/admin/listedelivre.php">Listes de livres</a> |
-
+                    <a>Vous êtes Admin !</a>
                 <?php endif; ?>
             <?php endif; ?>
         <?php endif; ?>
