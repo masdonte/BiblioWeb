@@ -1,8 +1,5 @@
 <?php
-
 include '../../common/header.php';
-
-
 
 try {
     $pdo = new PDO("mysql:host=localhost;dbname=biblio_db", "root", "");
@@ -11,50 +8,37 @@ try {
     die("Erreur : " . $e->getMessage());
 }
 
-
-
-
-// Vérifier que l'emprunt appartient bien à l'utilisateur connecté
 $stmt = $pdo->prepare("SELECT * FROM livres");
 $stmt->execute();
-$livres = $stmt->fetch(PDO::FETCH_ASSOC);
-
-
-
+$livres = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utilisateurs et Livres</title>
 </head>
 
 <body>
     <h1>Gestion des livres</h1>
-
     <table border="1" cellpadding="10">
-        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nom</th>
+             <th>Statut</th>
+   
+        </tr>
+        <?php foreach ($livres as $livre): ?>
             <tr>
-                <th>Titre du livre</th>
-                <th>Auteur</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($livres as $livre): ?>
-                <tr>
-                    <td><?= htmlspecialchars(string: $livres['titre']) ?></td>
-                    <td><?= htmlspecialchars($livres['auteur']) ?></td>
-                    <td><?= htmlspecialchars($livres['statut']) ?></td>
-                    </td>
-                </tr>
-            <?php endforeach; ?>
-        </tbody>
+                <td><?= htmlspecialchars($livre['id']) ?></td>
+                <td><?= htmlspecialchars($livre['titre']) ?></td>
+                <td><?= htmlspecialchars($livre['statut']) ?></td>
+                <?php endforeach; ?>
+            </td>
+        </tr>
     </table>
-
 </body>
-
-</html>
