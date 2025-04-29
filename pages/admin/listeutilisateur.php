@@ -29,5 +29,10 @@ $utilisateurs = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <?php
     }
     ?>
+       
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.jade.min.css"
+>
 </body>
 </html>

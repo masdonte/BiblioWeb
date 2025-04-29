@@ -66,6 +66,13 @@ foreach ($livres as $livre) {
             <?php endif; ?>
         <?php endforeach; ?>
     </table>
+       
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.jade.min.css"
+>
 </body>
+   
+
 
 </html>

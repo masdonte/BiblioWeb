@@ -163,6 +163,12 @@ $afficher_formulaire_ajout = isset($_POST['afficher_formulaire_ajout']);
             <input type="submit" value="Ajouter un livre">
         </form>
     <?php endif; ?>
+
+       
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.jade.min.css"
+>
 </body>
 
 </html>
