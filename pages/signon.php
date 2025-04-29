@@ -54,31 +54,30 @@ if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["nom"]))
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscription</title>
-</head>
-
+    </head>
 <body>
+    
+    <main class="container-fluid">
+        <div class="login">
+            <form action="" method="POST" class="login__form">
+                <h1>Créer un compte</h1>
 
-    <form action="" method="POST" class="login__form">
-        <h1>Créer un compte</h1>
+                <input type="text" name="nom" required placeholder="Votre nom" class="login__input">
+                <label for="nomCreate" class="login__label">Nom</label>
 
-        <input type="text" name="nom" required placeholder="Votre nom" class="login__input">
-        <label for="nomCreate" class="login__label">Nom</label>
-        <br>
+                <input type="email" name="email" required placeholder="Votre email" class="login__input">
+                <label for="emailCreate" class="login__label">Email</label>
 
-        <input type="email" name="email" required placeholder="Votre email" class="login__input">
-        <label for="emailCreate" class="login__label">Email</label>
-        <br>
+                <input type="password" name="password" required placeholder="Votre mot de passe" class="login__input">
+                <label for="passwordCreate" class="login__label">Mot de passe</label>
 
-        <input type="password" name="password" required placeholder="Votre mot de passe" class="login__input">
-        <label for="passwordCreate" class="login__label">Mot de passe</label>
-        <br>
+                <button type="submit" class="login__button">Créer un compte</button>
+            </form>
 
-        <button type="submit" class="login__button">Créer un compte</button>
-    </form>
-
-    <p>Déjà un compte ?</p>
-
-    <button><a href="../Biblioweb/index.php?page=login">Se connecter</a></button>
+            <p>Déjà un compte ?</p>
+            <button class="secondary"><a href="../Biblioweb/index.php?page=login">Se connecter</a></button>
+        </div>
+    </>
+    </div>
 </body>
-
 </html>
