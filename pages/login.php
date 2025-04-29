@@ -51,11 +51,10 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
 </head>
 
 <body>
-    <!--=============== LOGIN ===============-->
-    <div class="login container" id="loginAccessRegister">
-        <!--===== LOGIN ACCESS =====-->
+
+       
+        <form action="" method="POST" class="login">
         <h1>Se connecter</h1>
-        <form action="" method="POST" class="login__form">
             <div>
                 <input type="email" name="email" id="email" required placeholder="E-mail" class="login__input">
                 <label for="email">E-mail</label>
@@ -69,9 +68,10 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
             </div>
 
             <button type="submit" class="login__button">Connexion</button>
+            <p>Pas de compte ? <a href="../Biblioweb/index.php?page=signon">Création de compte</a></p>
         </form>
 
-        <p>Pas de compte ? <a href="../Biblioweb/index.php?page=signon">Création de compte</a></p>
+       
     </div>
 </body>
 
