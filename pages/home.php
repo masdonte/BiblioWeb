@@ -11,18 +11,37 @@ try {
 ?>
 
 
-<?php if (isset($_GET['logout']) && $_GET['logout'] === 'success'): ?>
+<?php if (isset($_POST['logout']) && $_POST['logout'] === 'success'): ?>
     <script>
         alert("Vous avez été déconnecté avec succès !");
     </script>
 <?php endif; ?>
+<html lang="en">
 
-<?php if (isset($_SESSION['user'])): ?>
-    <h2>Bienvenue, <?= htmlspecialchars($_SESSION['user']['nom']); ?> !</h2>
-    <p>Que souhaitez-vous faire aujourd'hui ?</p>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<?php else: ?>
-    <h2>Bienvenue sur la Bibliothèque en ligne !</h2>
-    <p>Inscrivez-vous ou connectez-vous pour accéder à notre collection de livres.</p>
+</head>
 
-<?php endif; ?>
+<body>
+
+    <div class="home">
+        <?php if (isset($_SESSION['user'])): ?>
+            <h2>Bienvenue, <?= htmlspecialchars($_SESSION['user']['nom']); ?> !</h2>
+            <p>Que souhaitez-vous faire aujourd'hui ?</p>
+
+        <?php else: ?>
+            <h2>Bienvenue sur la BiblioWeb !</h2>
+            <p>Inscrivez-vous ou connectez-vous pour accéder à notre collection de livres. </p>
+            <p>Votre destination ultime pour les amoureux de la lecture.
+                Plongez dans l'univers de la lecture.
+            </p>
+            
+            <img  class="image"src ="https://static.vecteezy.com/ti/photos-gratuite/t1/44280984-empiler-de-livres-sur-une-marron-contexte-concept-pour-monde-livre-journee-photo.jpg" alt="">
+        <?php endif; ?>
+       
+    </div>
+</body>
+
+</html>
