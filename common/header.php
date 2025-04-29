@@ -4,9 +4,14 @@ if (!isset($_SESSION)) {
     define('URL', 'http://localhost/BiblioWeb/'); // https://www.php.net/manual/en/function.define.php
 }
 ?>
+
 <header>
-    <h1>Bibliothèque en ligne</h1>
+    <h1 class="header">Bibliothèque en ligne</h1>
     <nav>
+        <link rel="stylesheet" href="./public/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+        
+    <div class="container">
         <a href="<?= URL ?>index.php?page=home">Accueil</a> |
         <?php if (!isset($_SESSION['user'])): ?>
             <a href="<?= URL ?>index.php?page=signon">Inscription</a> |
@@ -34,4 +39,5 @@ if (!isset($_SESSION)) {
         <?php endif; ?>
 
     </nav>
+    </div>
 </header>
