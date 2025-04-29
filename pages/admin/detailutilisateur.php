@@ -23,7 +23,7 @@ $livres = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 $livresParUtilisateur = [];
 foreach ($livres as $livre) {
-    $livresParUtilisateur[$livre['id_utilisateur']][] = $livre; 
+    $livresParUtilisateur[$livre['id_utilisateur']][] = $livre;
 }
 ?>
 
@@ -38,8 +38,8 @@ foreach ($livres as $livre) {
 
 <body>
     <h1>Liste des Utilisateurs avec leurs livres</h1>
-    <table border="1" cellpadding="10">
-        <tr>
+    <table>
+        <tr class="th1">
             <th>ID</th>
             <th>Nom</th>
             <th>Email</th>
@@ -66,13 +66,12 @@ foreach ($livres as $livre) {
             <?php endif; ?>
         <?php endforeach; ?>
     </table>
-       
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.jade.min.css"
->
+
+    <link rel="stylesheet" href="../../public/style.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.jade.min.css">
 </body>
-   
+
 
 
 </html>
