@@ -1,51 +1,59 @@
-.header{
-    text-align: center;
+.header {
+  text-align: center;
 }
 
-body{
-    font-family: 'Roboto',sans-serif ;
+body {
+  font-family: "Roboto", sans-serif;
 }
 
 .container {
-  
-      
-        padding: 20px;
-        text-align: center;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        gap: 20px;
-
-      
-  }
- 
-
-  .login {
-    width: 50%;
-    height: 100%;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-   
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 20px;
 }
 
-.home{
-    text-align: center;
+.login {
+  width: 50%;
+  height: 100%;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.image{
-    width: auto;
-    height: 350px;
+.home {
+  text-align: center;
+}
+
+.image {
+  width: auto;
+  height: 350px;
 }
 
 .recherche {
-    width: 400px;
-    text-align: center;
-    display: flex;
-    flex-direction: column; 
-    align-items: center; 
+  width: 400px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  flex: 1 1 calc(33.333% - 40px);
+  display: inline-block;
+}
+
+.card .description {
+  margin-bottom: 10px;
 }
 
