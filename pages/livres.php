@@ -14,20 +14,22 @@ try {
     <title>Liste des livres</title>
 </head>
 
-<body>
-    <form action="" method="post">
-        <input type="search" name="barre" placeholder="Rechercher par titre ou auteur">
-        <input type="submit" name="recherche" value="Rechercher">
-    </form>
-
+<div class="container">
+        <div class="recherche">
+            <form action="" method="post">
+                <input type="search" name="barre" placeholder="Saisir un auteur ou titre">
+                <input type="submit" name="recherche" value="Rechercher">
+            </form>
+        </div>
+    </div>
     <?php
     if (isset($_POST["recherche"]) && $_POST["recherche"] == "Rechercher") {
         $barre = htmlspecialchars($_POST["barre"]); // pour sécuriser le formulaire contre les failles HTML https://www.243tech.com/creer-une-barre-de-recherche-sur-son-site-php-mysql/
         $barre = trim($barre); // pour supprimer les espaces dans la requête de l'internaute
-        $barre = strip_tags($barre); // pour supprimer les balises HTML 
-    
+        $barre = strip_tags($barre); // pour supprimer les balises HTML
+
         if (!empty($barre)) {
-            $barre = '%' . strtolower(string: $barre) . '%';
+            $barre = '%' . strtolower($barre) . '%';
             $livre = $pdo->prepare("SELECT * FROM livres WHERE LOWER(titre) LIKE :barre OR LOWER(auteur) LIKE :barre");
             $livre->bindParam(':barre', $barre, PDO::PARAM_STR);
             $livre->execute();
@@ -72,5 +74,4 @@ try {
     }
     ?>
 </body>
-
 </html>
