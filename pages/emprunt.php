@@ -11,11 +11,10 @@ try {
 
 $userId = $_SESSION['user']['id'];
 
-// === 1. TRAITEMENT DU RETOUR D'UN LIVRE ===
+
 if (isset($_POST['rendre_id'])) {
     $empruntId = $_POST['rendre_id'];
 
-    // Vérifier que l'emprunt appartient bien à l'utilisateur connecté
     $stmt = $pdo->prepare("SELECT * FROM emprunts WHERE id = :id AND id_utilisateur = :userId");
     $stmt->bindParam(':id', $empruntId, PDO::PARAM_INT);
     $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
@@ -23,12 +22,12 @@ if (isset($_POST['rendre_id'])) {
     $emprunt = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($emprunt && !$emprunt['date_retour']) {
-        // 1. Mettre à jour la date_retour
+  
         $updateStmt = $pdo->prepare("UPDATE emprunts SET date_retour = NOW() WHERE id = :id");
         $updateStmt->bindParam(':id', $empruntId, PDO::PARAM_INT);
         $updateStmt->execute();
 
-        // 2. Remettre le livre en statut 'disponible'
+      
         $updateLivre = $pdo->prepare("UPDATE livres SET statut = 'disponible' WHERE id = :livreId");
         $updateLivre->bindParam(':livreId', $emprunt['id_livre'], PDO::PARAM_INT);
         $updateLivre->execute();
