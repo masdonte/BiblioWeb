@@ -11,7 +11,7 @@ try {
 if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["nom"])) {
     $nom = htmlspecialchars($_POST["nom"]);
     $email = htmlspecialchars($_POST["email"]);
-    $password = password_hash($_POST["password"], PASSWORD_DEFAULT); 
+    $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
     $stmt = $pdo->prepare("SELECT * FROM utilisateurs WHERE email = :email");
     $stmt->bindParam(':email', $email);
@@ -33,12 +33,12 @@ if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["nom"]))
 
             $_SESSION['user'] = [
                 'id' => $user['id'],
-                'nom' => $user['nom'],  
+                'nom' => $user['nom'],
                 'email' => $user['email'],
                 'role' => $user['role']
             ];
 
-            header("Location:/BiblioWeb/index.php?page=home"); 
+            header("Location:/BiblioWeb/index.php?page=home");
             exit();
         } else {
             echo "<script>alert('Erreur lors de l\'inscription.');</script>";
@@ -54,9 +54,10 @@ if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["nom"]))
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscription</title>
-    </head>
+</head>
+
 <body>
-    
+
     <main class="container-fluid">
         <div class="login">
             <form action="" method="POST" class="login__form">
@@ -77,7 +78,7 @@ if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["nom"]))
             <p>Déjà un compte ?</p>
             <button class="secondary"><a href="../Biblioweb/index.php?page=login">Se connecter</a></button>
         </div>
-    </>
-    </div>
+        </div>
 </body>
+
 </html>
