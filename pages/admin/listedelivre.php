@@ -25,11 +25,12 @@ $livre = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     <?php
     foreach ($livre as $livr) { ?>
+    <div class="card">
         <p> Nom du livre : <?php echo $livr["titre"]; ?> </p>
         <p> Auteur : <?php echo $livr["auteur"]; ?> </p>
         <p> genre : <?php echo $livr["genre"]; ?> </p>
         <p> statut : <?php echo $livr["statut"]; ?> </p>
-
+        </div>
         <?php
     }
     ?>
