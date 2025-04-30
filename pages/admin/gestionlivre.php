@@ -100,7 +100,7 @@ $afficher_formulaire_ajout = isset($_POST['afficher_formulaire_ajout']);
 <body>
     <h1>Gestion des livres</h1>
     <table border="1" cellpadding="10">
-        <tr class="th1">
+        <tr class="th2">
             <th>ID</th>
             <th>Nom</th>
             <th>Statut</th>
@@ -129,7 +129,10 @@ $afficher_formulaire_ajout = isset($_POST['afficher_formulaire_ajout']);
         <?php endforeach; ?>
         <form action="" method="post">
             <input type="hidden" name="afficher_formulaire_ajout" value="1">
-            <input type="submit" value="Ajouter un livre">
+            
+            <div class="ajouter">
+                <input type="submit" value="Ajouter un livre">
+            </div>
         </form>
     </table>
 
