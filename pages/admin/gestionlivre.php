@@ -32,8 +32,8 @@ if (isset($_POST['modifier_id'])) {
     $id = $_POST['modifier_id'];
     $titre = $_POST['titre'];
     $statut = $_POST['statut'];
-    $auteur = $_POST['auteur']; 
-    $genre = $_POST['genre']; 
+    $auteur = $_POST['auteur'];
+    $genre = $_POST['genre'];
 
     $stmt = $pdo->prepare("UPDATE livres SET titre = :titre, statut = :statut, auteur = :auteur, genre = :genre WHERE id = :id");
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
@@ -94,12 +94,13 @@ $afficher_formulaire_ajout = isset($_POST['afficher_formulaire_ajout']);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Utilisateurs et Livres</title>
+    <link rel="stylesheet" href="../../public/style.css">
 </head>
 
 <body>
     <h1>Gestion des livres</h1>
     <table border="1" cellpadding="10">
-        <tr>
+        <tr class="th1">
             <th>ID</th>
             <th>Nom</th>
             <th>Statut</th>
@@ -126,6 +127,10 @@ $afficher_formulaire_ajout = isset($_POST['afficher_formulaire_ajout']);
                 </td>
             </tr>
         <?php endforeach; ?>
+        <form action="" method="post">
+            <input type="hidden" name="afficher_formulaire_ajout" value="1">
+            <input type="submit" value="Ajouter un livre">
+        </form>
     </table>
 
     <?php if ($livre_a_modifier): ?>
@@ -133,13 +138,17 @@ $afficher_formulaire_ajout = isset($_POST['afficher_formulaire_ajout']);
         <form action="" method="post">
             <input type="hidden" name="modifier_id" value="<?= htmlspecialchars($livre_a_modifier['id']) ?>">
             <label for="titre">Titre :</label>
-            <input type="text" id="titre" name="titre" value="<?= htmlspecialchars($livre_a_modifier['titre']) ?>" required><br>
+            <input type="text" id="titre" name="titre" value="<?= htmlspecialchars($livre_a_modifier['titre']) ?>"
+                required><br>
             <label for="statut">Statut :</label>
-            <input type="text" id="statut" name="statut" value="<?= htmlspecialchars($livre_a_modifier['statut']) ?>" required><br>
-            <label for="auteur">Auteur :</label> 
-            <input type="text" id="auteur" name="auteur" value="<?= htmlspecialchars($livre_a_modifier['auteur']) ?>" required><br>
-            <label for="genre">Genre :</label> 
-            <input type="text" id="genre" name="genre" value="<?= htmlspecialchars($livre_a_modifier['genre']) ?>" required><br>
+            <input type="text" id="statut" name="statut" value="<?= htmlspecialchars($livre_a_modifier['statut']) ?>"
+                required><br>
+            <label for="auteur">Auteur :</label>
+            <input type="text" id="auteur" name="auteur" value="<?= htmlspecialchars($livre_a_modifier['auteur']) ?>"
+                required><br>
+            <label for="genre">Genre :</label>
+            <input type="text" id="genre" name="genre" value="<?= htmlspecialchars($livre_a_modifier['genre']) ?>"
+                required><br>
             <input type="submit" value="Enregistrer">
         </form>
     <?php endif; ?>
@@ -151,24 +160,19 @@ $afficher_formulaire_ajout = isset($_POST['afficher_formulaire_ajout']);
             <input type="text" id="titre" name="titre" required><br>
             <label for="statut">Statut :</label>
             <input type="text" id="statut" name="statut" required><br>
-            <label for="auteur">Auteur :</label> 
+            <label for="auteur">Auteur :</label>
             <input type="text" id="auteur" name="auteur" required><br>
-            <label for="genre">Genre :</label> 
+            <label for="genre">Genre :</label>
             <input type="text" id="genre" name="genre" required><br>
             <input type="submit" name="ajouter_livre" value="Ajouter">
         </form>
     <?php else: ?>
-        <form action="" method="post">
-            <input type="hidden" name="afficher_formulaire_ajout" value="1">
-            <input type="submit" value="Ajouter un livre">
-        </form>
+
     <?php endif; ?>
 
-       
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.jade.min.css"
->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.jade.min.css">
+    <link rel="stylesheet" href="../../public/style.css">
 </body>
 
 </html>
