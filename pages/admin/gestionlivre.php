@@ -115,7 +115,7 @@ $afficher_formulaire_ajout = isset($_POST['afficher_formulaire_ajout']);
                 <td><?= htmlspecialchars($livre['statut']) ?></td>
                 <td><?= htmlspecialchars($livre['auteur']) ?></td> <!-- Nouveau champ -->
                 <td><?= htmlspecialchars($livre['genre']) ?></td> <!-- Nouveau champ -->
-                <td>
+                <td class="reduire">
                     <form action="" method="post" style="display:inline;">
                         <input type="hidden" name="supprimer_id" value="<?= htmlspecialchars($livre['id']) ?>">
                         <input type="submit" value="Supprimer">
