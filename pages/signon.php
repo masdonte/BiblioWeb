@@ -76,7 +76,7 @@ if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["nom"]))
             </form>
 
             <p>Déjà un compte ?</p>
-            <button class="secondary"><a href="../Biblioweb/index.php?page=login">Se connecter</a></button>
+            <a href="../Biblioweb/index.php?page=login">Se connecter</a></button>
         </div>
         </div>
 </body>
