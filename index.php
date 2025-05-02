@@ -29,6 +29,7 @@ if (in_array($page, $pages)) {
 
 <!DOCTYPE html>
 <html lang="fr">
+<html data-theme="light">
 
 <head>
     <meta charset="UTF-8">
