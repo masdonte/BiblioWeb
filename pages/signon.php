@@ -64,13 +64,13 @@ if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["nom"]))
                 <h1>Créer un compte</h1>
 
                 <input type="text" name="nom" required placeholder="Votre nom" class="login__input">
-                <label for="nomCreate" class="login__label">Nom</label>
+                <label for="nomCreate" class="login__label"></label>
 
                 <input type="email" name="email" required placeholder="Votre email" class="login__input">
-                <label for="emailCreate" class="login__label">Email</label>
+                <label for="emailCreate" class="login__label"></label>
 
                 <input type="password" name="password" required placeholder="Votre mot de passe" class="login__input">
-                <label for="passwordCreate" class="login__label">Mot de passe</label>
+                <label for="passwordCreate" class="login__label"></label>
 
                 <button type="submit" class="login__button">Créer un compte</button>
             </form>

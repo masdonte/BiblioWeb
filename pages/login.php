@@ -57,7 +57,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
         <h1>Se connecter</h1>
             <div>
                 <input type="email" name="email" id="email" required placeholder="E-mail" class="login__input">
-                <label for="email">E-mail</label>
+                <label for="email"></label>
             </div>
 
             <div>
