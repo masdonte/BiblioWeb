@@ -28,7 +28,8 @@ foreach ($livres as $livre) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
+<html data-theme="light">
 
 <head>
     <meta charset="UTF-8">

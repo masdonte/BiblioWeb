@@ -88,7 +88,8 @@ $afficher_formulaire_ajout = isset($_POST['afficher_formulaire_ajout']);
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
+<html data-theme="light">
 
 <head>
     <meta charset="UTF-8">

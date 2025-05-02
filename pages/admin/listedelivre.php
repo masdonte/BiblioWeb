@@ -13,7 +13,8 @@ $stmt = $pdo->prepare("SELECT * FROM livres");
 $stmt->execute();
 $livre = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
-<html lang="en">
+<html lang="fr">
+<html data-theme="light">
 
 <head>
     <meta charset="UTF-8">
