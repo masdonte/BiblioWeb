@@ -25,12 +25,12 @@ try {
     <?php
     if (isset($_POST["recherche"]) && $_POST["recherche"] == "Rechercher") {
         $barre = htmlspecialchars($_POST["barre"]); // pour sécuriser le formulaire contre les failles HTML https://www.243tech.com/creer-une-barre-de-recherche-sur-son-site-php-mysql/
-        $barre = trim($barre); // pour supprimer les espaces dans la requête de l'internaute
+        $barre = trim($barre); // pour supprimer les espaces dans la requête de l'internaute 
         $barre = strip_tags($barre); // pour supprimer les balises HTML
 
         if (!empty($barre)) {
             $barre = '%' . strtolower($barre) . '%';
-            $livre = $pdo->prepare("SELECT * FROM livres WHERE LOWER(titre) LIKE :barre OR LOWER(auteur) LIKE :barre");
+            $livre = $pdo->prepare("SELECT * FROM livres WHERE LOWER(titre) LIKE :barre OR LOWER(auteur) LIKE :barre"); // pour éviter le case sensitive https://stackoverflow.com/questions/16082575/sql-ignore-case-while-searching-for-a-string
             $livre->bindParam(':barre', $barre, PDO::PARAM_STR);
             $livre->execute();
             $affich = $livre->fetchAll(PDO::FETCH_ASSOC);
